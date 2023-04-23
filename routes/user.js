@@ -1,10 +1,6 @@
 const express = require('express');
 const path = require('path');
 
-const bcrypt = require('bcryptjs');
-const uuid = require('uuid');
-const jwt = require('jsonwebtoken');
-
 //const db = require('../util/database');
 const userMiddleware = require('../middleware/user.js');
 
@@ -13,14 +9,20 @@ const userController = require('../controllers/user');
 const router = express.Router();
 
 router.get('/', function (req, res) {
-  res.redirect('/login');
+  res.redirect('/sign-up');
 }); //userController.getIndex
 
-router.post('/sign-up', (req, res, next) => {});
-router.post('/login', (req, res, next) => {});
+router.post(
+  '/sign-up',
+  userMiddleware.validateRegister,
+  userController.postSignup
+);
 
-router.get('/secret-route', (req, res, next) => {
-  res.send('This is the secret content. Only logged in users can see that!');
+router.post('/login', userController.postLogin);
+
+router.get('/secret-route', userMiddleware.isLoggedIn, (req, res, next) => {
+  console.log(req.userData);
+  res.send('GRAFIK');
 });
 
 module.exports = router;
