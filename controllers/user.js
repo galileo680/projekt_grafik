@@ -29,7 +29,7 @@ exports.postSignup = (req, res, next) => {
               msg: err,
             });
           } else {
-            // has hashed pw => add to database
+            //
             db.query(
               `INSERT INTO users (id, username, password, registered) VALUES ('${uuid.v4()}', ${db.escape(
                 req.body.username
