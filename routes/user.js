@@ -2,27 +2,38 @@ const express = require('express');
 const path = require('path');
 
 //const db = require('../util/database');
-const userMiddleware = require('../middleware/user.js');
+const auth = require('../middleware/auth.js');
 
 const userController = require('../controllers/user');
 
 const router = express.Router();
 
 router.get('/', function (req, res) {
-  res.redirect('/sign-up');
-}); //userController.getIndex
+  res.redirect('/register');
+});
 
-router.post(
-  '/sign-up',
-  userMiddleware.validateRegister,
-  userController.postSignup
-);
+router.post('/register', userController.register);
+router.post('/login', userController.login);
 
-router.post('/login', userController.postLogin);
+router.get('/register', (req, res) => {
+  res.render('user/register');
+});
 
-router.get('/secret-route', userMiddleware.isLoggedIn, (req, res, next) => {
-  console.log(req.userData);
-  res.send('GRAFIK');
+router.get('/login', (req, res) => {
+  res.render('user/login');
+});
+
+// router.get('/grafik', auth, (req, res) => {
+//   res.send('grafik');
+// });
+
+router.get('/grafik/:username', auth, (req, res) => {
+  if (req.user.username !== req.params.username) {
+    return res.status(403).send('Access denied');
+  }
+
+  // User has access, render the page
+  res.send('Welcome to your personal grafik page!');
 });
 
 module.exports = router;
