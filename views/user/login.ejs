@@ -5,7 +5,8 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
   <body>
-    <h1>LOGIN</h1>
+    <h1 class="title">GRAFIK PRACY</h1>
+    <h2>LOGIN</h2>
     <form action="/login" method="POST">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required />
@@ -15,5 +16,19 @@
 
       <input type="submit" value="Login" />
     </form>
+    <p class="link-prompt">
+      Don't have an account yet? <a href="/register">Register here</a>.
+    </p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const registered = urlParams.get('registered');
+
+        if (registered) {
+          alert('Registration successful. You can now log in.');
+        }
+      });
+    </script>
   </body>
 </html>

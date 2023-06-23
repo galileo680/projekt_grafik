@@ -3,6 +3,12 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.title {
+  margin-top: 3rem;
+  text-align: center;
+  color: #0056b3;
+}
+
 form {
   margin: 0 auto;
   width: 20%;
@@ -17,10 +23,10 @@ label {
   margin-bottom: 10px;
 }
 
-h1 {
+h2 {
   text-align: center;
   color: #0056b3;
-  margin-top: 20vh;
+  margin-top: 10vh;
 }
 
 input[type='text'],
@@ -45,4 +51,20 @@ input[type='submit'] {
 
 input[type='submit']:hover {
   background-color: #0056b3;
+}
+
+.link-prompt {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #444;
+}
+
+.link-prompt a {
+  color: #6495ed;
+  text-decoration: none;
+}
+
+.link-prompt a:hover {
+  color: #4169e1;
 }

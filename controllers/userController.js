@@ -33,7 +33,9 @@ exports.register = (req, res) => {
         },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          //res.json({ token });
+          //res.redirect('/login');
+          return res.redirect('/login?registered=true');
         }
       );
     });

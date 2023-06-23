@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.navbar p {
+  margin-top: auto;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.navbar a {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.navbar a:hover {
+  background-color: #0056b3;
+}

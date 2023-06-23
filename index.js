@@ -6,6 +6,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
 const userRoutes = require('./routes/user');
+const grafikRoutes = require('./routes/schedule');
 
 const app = express();
 
@@ -20,5 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 
 app.use(userRoutes);
+app.use('/grafik', grafikRoutes);
 
 app.listen(PORT, () => console.log(`Serve running on port ${PORT}`));

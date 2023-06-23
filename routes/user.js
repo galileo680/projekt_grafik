@@ -4,7 +4,7 @@ const path = require('path');
 //const db = require('../util/database');
 const auth = require('../middleware/auth.js');
 
-const userController = require('../controllers/user');
+const userController = require('../controllers/userController.js');
 
 const router = express.Router();
 
@@ -23,17 +23,20 @@ router.get('/login', (req, res) => {
   res.render('user/login');
 });
 
-// router.get('/grafik', auth, (req, res) => {
-//   res.send('grafik');
-// });
-
-router.get('/grafik/:username', auth, (req, res) => {
-  if (req.user.username !== req.params.username) {
-    return res.status(403).send('Access denied');
-  }
-
-  // User has access, render the page
-  res.send('Welcome to your personal grafik page!');
+router.get('/logout', (req, res) => {
+  // Clear the JWT cookie
+  res.clearCookie('token');
+  // Redirect to the login page
+  res.redirect('/login');
 });
+
+// router.get('/grafik/:username', auth, (req, res) => {
+//   if (req.user.username !== req.params.username) {
+//     return res.status(403).send('Access denied');
+//   }
+
+//   // User has access, render the page
+//   res.send('Welcome to your personal grafik page!');
+// });
 
 module.exports = router;
