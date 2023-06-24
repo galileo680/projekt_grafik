@@ -33,7 +33,7 @@ router.get('/:username', auth, (req, res) => {
     if (err) throw err;
 
     // Pass the schedule data to the view
-    console.log(results);
+    //console.log(results);
     res.render('schedule/schedule', {
       username: req.user.username,
       schedule: results,
@@ -41,6 +41,6 @@ router.get('/:username', auth, (req, res) => {
   });
 });
 
-router.post('/submit', auth, scheduleController.submitSchedule);
+router.post('/submit', auth, scheduleController.submitSchedule2);
 
 module.exports = router;

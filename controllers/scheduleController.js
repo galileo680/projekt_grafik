@@ -52,3 +52,50 @@ exports.submitSchedule = (req, res) => {
     }
   );
 };
+
+exports.submitSchedule2 = (req, res) => {
+  // The new schedule to be submitted
+  const newSchedule = {
+    dayOfWeek: Number(req.body.dayOfWeek),
+    startTime: req.body.startTime,
+    endTime: req.body.endTime,
+    userId: req.user.id, // Save the userId along with the schedule
+  };
+
+  console.log('typeof: ', typeof newSchedule.dayOfWeek);
+  // Query to get all schedules for the same day of the week
+  const query =
+    'SELECT * FROM WorkerSchedules WHERE dayOfWeek = ? AND userId = ?';
+  db.query(
+    query,
+    [newSchedule.dayOfWeek, newSchedule.userId],
+    (err, schedules) => {
+      if (err) throw err;
+
+      console.log('schedules: ', schedules);
+
+      // Check if the new schedule overlaps with any existing schedule
+      for (let schedule of schedules) {
+        console.log('sprawdzam overlapping');
+        if (
+          newSchedule.startTime < schedule.endTime &&
+          newSchedule.endTime > schedule.startTime
+        ) {
+          // There is an overlap
+          return res
+            .status(400)
+            .send(
+              'The proposed working hours overlap with an existing schedule.'
+            );
+        }
+      }
+
+      // If there's no overlap, insert the new schedule
+      const insertQuery = 'INSERT INTO WorkerSchedules SET ?';
+      db.query(insertQuery, [newSchedule], (err, results) => {
+        if (err) throw err;
+        res.redirect(`/grafik/${req.user.username}`);
+      });
+    }
+  );
+};
