@@ -34,9 +34,11 @@ router.get('/:username', auth, (req, res) => {
 
     // Pass the schedule data to the view
     //console.log(results);
+    const errorMessage = req.query.error;
     res.render('schedule/schedule', {
       username: req.user.username,
       schedule: results,
+      error: errorMessage,
     });
   });
 });

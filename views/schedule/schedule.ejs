@@ -35,11 +35,18 @@
       <button type="submit">Submit</button>
     </form>
 
-    <table>
+    <% if (typeof error !== 'undefined') { %>
+    <script type="text/javascript">
+      alert('<%= error %>');
+    </script>
+    <% } %>
+
+    <table class="schedule-table">
       <tr>
         <th>Day of Week</th>
         <th>Start Time</th>
         <th>End Time</th>
+        <th>Worker name</th>
       </tr>
       <% for(let i = 0; i < schedule.length; i++) { %>
       <tr>

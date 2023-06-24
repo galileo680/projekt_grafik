@@ -51,3 +51,21 @@ td {
   text-align: center;
   padding: 10px;
 }
+
+.schedule-table {
+  width: 100%; /* Sets the width of the table to take up the full width of its container */
+  border-collapse: collapse; /* Collapses cell borders */
+}
+
+.schedule-table th {
+  background-color: #f0f0f0; /* Sets the background color of header cells to a light gray */
+  height: 50px; /* Sets the height of header cells */
+  text-align: center; /* Centers the text in header cells */
+}
+
+.schedule-table td {
+  height: 50px; /* Sets the height of normal cells */
+  text-align: center; /* Centers the text in normal cells */
+  border: 1px solid #ddd; /* Adds a border around each cell */
+  vertical-align: middle; /* Vertically centers the text in normal cells */
+}

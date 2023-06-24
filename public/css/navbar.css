@@ -4,21 +4,23 @@ body {
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #f0f0f0;
+  background-color: #4092eb;
   padding: 10px;
   margin-bottom: 20px;
 }
 .navbar p {
   margin-top: auto;
+  margin-bottom: auto;
   font-size: 1.5rem;
   font-weight: bolder;
+  color: whitesmoke;
 }
 
 .navbar a {
   margin: 10px 0;
   padding: 5px;
-  background-color: #007bff;
-  color: white;
+  background-color: whitesmoke;
+  color: #007bff;
   text-align: center;
   border: none;
   border-radius: 5px;
@@ -27,5 +29,6 @@ body {
   transition: background-color 0.2s;
 }
 .navbar a:hover {
-  background-color: #0056b3;
+  background-color: #007bff;
+  color: whitesmoke;
 }
