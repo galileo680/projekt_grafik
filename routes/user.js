@@ -30,13 +30,4 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
-// router.get('/grafik/:username', auth, (req, res) => {
-//   if (req.user.username !== req.params.username) {
-//     return res.status(403).send('Access denied');
-//   }
-
-//   // User has access, render the page
-//   res.send('Welcome to your personal grafik page!');
-// });
-
 module.exports = router;
