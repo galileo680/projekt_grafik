@@ -1,8 +1,10 @@
+// userController.js
 const bcrypt = require('bcryptjs');
-const uuid = require('uuid');
+//const uuid = require('uuid');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
+const UserDetail = require('../models/userDetail');
 
 exports.register = (req, res) => {
   User.findUserByUsername(req.body.username, (err, results) => {
@@ -24,6 +26,17 @@ exports.register = (req, res) => {
           id: results.insertId,
         },
       };
+
+      const userId = results.insertId;
+
+      // Here we are adding user details to the user_details table
+      UserDetail.createUserDetail({ ...req.body, userId }, (err, results) => {
+        if (err) {
+          return res.status(500).send('Server error');
+        }
+
+        // continue with your existing code...
+      });
 
       jwt.sign(
         payload,

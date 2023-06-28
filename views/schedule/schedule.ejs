@@ -4,6 +4,10 @@
     <title>Grafik</title>
     <link rel="stylesheet" type="text/css" href="/css/schedule.css" />
     <link rel="stylesheet" type="text/css" href="/css/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
   </head>
   <body>
     <div class="navbar">
@@ -53,9 +57,65 @@
         <td><%= schedule[i].dayOfWeek %></td>
         <td><%= schedule[i].startTime %></td>
         <td><%= schedule[i].endTime %></td>
-        <td><%= schedule[i].username %></td>
+        <td>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#userModal<%=i%>"
+          >
+            <%= schedule[i].username %>
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="userModal<%=i%>"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="userModalLabel<%=i%>"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="userModalLabel<%=i%>">
+                    <%= schedule[i].username %>'s Details
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Name: <%= schedule[i].name %></p>
+                  <p>Surname: <%= schedule[i].surname %></p>
+                  <p>Email: <%= schedule[i].email %></p>
+                  <p>Phone Number: <%= schedule[i].phone_number %></p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
       </tr>
       <% } %>
     </table>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>

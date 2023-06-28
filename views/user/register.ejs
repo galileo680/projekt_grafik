@@ -2,7 +2,18 @@
 <html>
   <head>
     <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+    <style>
+      .input-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .input-container label,
+      .input-container input {
+        width: 45%;
+      }
+    </style>
   </head>
   <body>
     <h1 class="title">GRAFIK PRACY</h1>
@@ -13,6 +24,18 @@
 
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required />
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" name="surname" required />
+
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="phone_number" name="phone_number" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
 
       <input type="submit" value="Register" />
     </form>

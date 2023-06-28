@@ -7,9 +7,17 @@ exports.getSchedule = (req, res) => {
     return res.status(403).send('Access denied');
   }
 
+  //   const query = `
+  //     SELECT WorkerSchedules.*, Users.username FROM WorkerSchedules
+  //     JOIN Users ON WorkerSchedules.userId = Users.id
+  //     ORDER BY dayOfWeek, startTime
+  // `;
+
   const query = `
-    SELECT WorkerSchedules.*, Users.username FROM WorkerSchedules
+    SELECT WorkerSchedules.*, Users.username, user_details.name, user_details.surname, user_details.email, user_details.phone_number 
+    FROM WorkerSchedules
     JOIN Users ON WorkerSchedules.userId = Users.id
+    JOIN user_details ON Users.id = user_details.user_Id
     ORDER BY dayOfWeek, startTime
 `;
 

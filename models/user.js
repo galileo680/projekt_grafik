@@ -1,3 +1,4 @@
+// user.js
 const connection = require('../util/database');
 const bcrypt = require('bcryptjs');
 
